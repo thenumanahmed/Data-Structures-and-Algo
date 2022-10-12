@@ -1,0 +1,194 @@
+stl is most optimised
+=> in stl sort size+1 index is used for the last element
+
+sort(arr, arr+size )		// arr+size == address of arr[size](non-existing element )
+vector.end() 		//pointer to last element + 1
+
+
+
+
+
+
+
+
+					___________________________ SET __________________________
+Store unique elements only in sorted order
+function
+s.insert(x)  erase(x)  clear()  size() count(x)
+OlogN for all functions
+s.begin()		iterator to the first element
+s.end()		iterator to the next to last element
+s.upper_bound(x)	iterator to the first element which is greater than x		// if non ->returns s.end()
+s.lower_bound(x)	iterator to the first element which is greater than or equal to x	// if non ->returns s.end()
+s.find(x)		iterator to the element x	// if x is not found ->returns s.end()
+s.erase(it)		removes the element through the iterator		//s.erase(s.begin())
+
+if(s.count(10)==0) cout<<"10 not found"<<endl;
+if(s.find(10)==s.end()) cout<<"10 not found"<<endl;
+
+//	although set is already sorted .... time to get minimum element is not const( logN )
+
+
+
+
+
+
+
+
+					___________________________ ITERATOR _______________________ 
+
+vector<int>::iterator it = v.begin();
+auto it = v.begin();	//will auto deduce the data type
+	can be used as same as pointers
+	*(it+2); or it++	
+
+
+
+
+
+
+
+					___________________________ STL ARRAY _______________________ 
+array<int,4> a ={1,2,3,4};		//definition
+//uses simple static array with fixed size
+a.at(2) =>a[2];
+a.empty();
+a.front();	//first element
+a.back();	//last existing
+
+
+
+
+
+
+
+					___________________________ STL VECTOR _______________________ 
+=> dynamic
+=> when gets filled new vector of double size and copies previous elements then destroys previous
+=> string to fit ==> to decrease the capacity of vector
+=> vector.size() ==> returns no of elements stored
+=> vector.capacity() ==> returns the capacity of vector
+
+vector<int> v2(v1);	==> v2 will be created copied with elements of v1
+
+
+
+
+
+
+
+
+
+					___________________________ PRIORITY QUEUE _______________________ 
+
+//max heap
+  	priority_queue<int> maxi;
+//min - heap
+  	priority_queue<int,vector<int>, greater<int> > mini;
+
+
+
+
+
+
+
+
+
+					___________________________ MAPS ___________________________
+
+Just like special arrays in which the indices(keys) of elements can be negative or very big or even string, vector, pair, array,etc
+(As python-dictionaries)
+map<key_datatype,value_datatype> m;
+unordered_map<string, int> umap;		//unordered just time complexities are change
+
+map<string,int> m;
+m["hello"] = 40;		//adding an element
+m.clear();		//clears the map
+m[key] = value of elements with key
+
+functions 
+m.count(key), m.find(key) , m.erase(key),m.lower_bound(key), m.upper_bound(key)	//similar to set
+ 
+m[index] = O(1);	//array
+m[key] = O(logN);	//map
+
+map<int, int> m;
+cout<<m[15]<<" " <<endl;	//to get frequency of element with key 15
+	//if element is not present it will be created in the map(size will increase) and freq will be set to 0
+m[1];		freq set to 0(if not present) else do nothing
+m[1]++;	freq increased by 1
+m[1]= 3;	freq set to 3
+
+
+
+Important:
+=> very common use is to count the frequency of various objects
+print ok if only once and increase the frequency by 1
+else append the number e.g j1 and increase the frequency by 1
+
+=> keys are in sorted order
+
+
+//	displaying map
+for(auto i:m){
+	cout<<i.first<<" "<<i.second<<endl;		//as i will get a pair
+}
+
+
+
+
+					___________________________ Iterating Containers  ___________________________
+
+
+for(auto it=s.begin(); it!=s.end(); it++){
+	//*it
+}
+This works for all three: set, vector, map
+
+Shorthand:
+vector<int> v;
+for(auto x:v){
+	//x
+}
+
+set<int> s;
+for(auto x:s){
+	//x
+}
+map<int,int > m;
+for(pair<int, int> x:m){
+	cout<<x.first<<" "<<x.second<<endl;
+}
+
+
+
+
+
+
+ 
+					_________________________ Imp Points _________________________
+
+to return multiple values from a function we can use pair (stl )
+=> returning remainder and co-efficient at the same time
+
+returning a pair
+
+pair<double, double> getPair(double a,double b){	
+	return make_pair(a, br);
+}
+
+
+
+
+
+
+
+
+
+					__________________________ Advanced STL ________________________
+bool decresing_order(int x, int y){
+  return x > y:
+}
+sort(a,a+10,decreasing_order);	sorts in descending order
+//specifying rule for sorting
+
